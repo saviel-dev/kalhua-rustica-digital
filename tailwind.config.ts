@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				/* Kalhua Brand Colors */
+				coffee: {
+					DEFAULT: 'hsl(var(--coffee))',
+					foreground: 'hsl(var(--coffee-foreground))',
+					bean: 'hsl(var(--coffee-bean))'
+				},
+				'warm-beige': 'hsl(var(--warm-beige))',
+				'rustic-wood': 'hsl(var(--rustic-wood))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
