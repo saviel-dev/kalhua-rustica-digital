@@ -60,6 +60,7 @@ export default {
 				},
 				'warm-beige': 'hsl(var(--warm-beige))',
 				'rustic-wood': 'hsl(var(--rustic-wood))',
+				'text-readable': 'hsl(var(--text-readable))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -79,6 +80,7 @@ export default {
 			boxShadow: {
 				'elegant': '0 4px 20px hsl(var(--coffee-bean) / 0.15)',
 				'coffee': '0 10px 30px -10px hsl(var(--coffee) / 0.3)',
+				'glow': '0 0 40px hsl(var(--coffee) / 0.2)',
 			},
 			keyframes: {
 				'accordion-down': {

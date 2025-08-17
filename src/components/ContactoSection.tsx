@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -7,12 +7,29 @@ import { useToast } from "@/hooks/use-toast";
 import { Instagram, Facebook, MessageCircle, Phone, Mail } from "lucide-react";
 
 const ContactoSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
     mensaje: ''
   });
   const { toast } = useToast();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('contacto');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,12 +81,12 @@ const ContactoSection = () => {
           
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Information */}
-            <div className="space-y-8">
+            <div className={`space-y-8 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
               <div>
                 <h3 className="text-2xl font-bold text-primary mb-4">
                   ¡Hablemos de café!
                 </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                <p className="text-lg text-readable leading-relaxed mb-6">
                   Estamos aquí para resolver tus dudas, recibir tus pedidos especiales 
                   o simplemente charlar sobre nuestra pasión: el café artesanal.
                 </p>
@@ -77,8 +94,8 @@ const ContactoSection = () => {
               
               {/* Contact Methods */}
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center">
+                <div className="flex items-center space-x-3 hover-lift">
+                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center animate-pulse-gentle">
                     <Phone className="w-5 h-5 text-coffee-foreground" />
                   </div>
                   <div>
@@ -89,8 +106,8 @@ const ContactoSection = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center">
+                <div className="flex items-center space-x-3 hover-lift">
+                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center animate-pulse-gentle">
                     <Mail className="w-5 h-5 text-coffee-foreground" />
                   </div>
                   <div>
@@ -116,7 +133,8 @@ const ContactoSection = () => {
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`w-12 h-12 bg-card rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 ${social.color} hover:shadow-lg`}
+                        className={`w-12 h-12 bg-card rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${social.color} hover:shadow-lg animate-float`}
+                        style={{ animationDelay: `${social.name === 'Instagram' ? '0s' : social.name === 'Facebook' ? '0.2s' : '0.4s'}` }}
                       >
                         <IconComponent className="w-5 h-5" />
                       </a>
@@ -127,7 +145,7 @@ const ContactoSection = () => {
             </div>
             
             {/* Contact Form */}
-            <Card className="coffee-card">
+            <Card className={`coffee-card hover-lift ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
               <CardHeader>
                 <CardTitle className="text-primary">Envíanos un mensaje</CardTitle>
               </CardHeader>

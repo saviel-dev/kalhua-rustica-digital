@@ -1,6 +1,24 @@
+import { useState, useEffect } from "react";
 import foundersImage from "@/assets/founders.jpg";
 
 const HistoriaSection = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('historia');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
   return (
     <section id="historia" className="py-20 bg-warm-beige">
       <div className="container mx-auto px-4">
@@ -10,30 +28,30 @@ const HistoriaSection = () => {
           </h2>
           
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <p className="text-lg text-muted leading-relaxed">
+            <div className={`space-y-6 ${isVisible ? 'animate-fade-in-left' : 'opacity-0'}`}>
+              <p className="text-lg text-readable leading-relaxed">
                 Kalhua Café nació del sueño de una pareja emprendedora que decidió convertir su 
                 pasión por el café en algo más grande. Lo que comenzó como experimentos caseros 
                 con granos selectos, se transformó en una marca que celebra la calidad artesanal 
                 y el amor por los sabores auténticos.
               </p>
               
-              <p className="text-lg text-muted leading-relaxed">
+              <p className="text-lg text-readable leading-relaxed">
                 Cada producto que creamos lleva nuestra esencia: el cuidado en la selección, 
                 la dedicación en la preparación y la calidez de un negocio familiar. 
                 Nuestras marquesas y cafés no son solo productos, son experiencias que 
                 conectan momentos especiales con sabores inolvidables.
               </p>
               
-              <p className="text-lg text-muted leading-relaxed">
+              <p className="text-lg text-readable leading-relaxed">
                 Con raíces venezolanas y un corazón lleno de ilusiones, Kalhua Café representa 
                 la perseverancia, la calidad y el compromiso de llevar lo mejor del café 
                 artesanal a cada hogar.
               </p>
               
               <div className="pt-4">
-                <div className="inline-flex items-center space-x-4 bg-white/50 backdrop-blur-sm rounded-2xl px-6 py-4">
-                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center">
+                <div className="inline-flex items-center space-x-4 bg-white/50 backdrop-blur-sm rounded-2xl px-6 py-4 hover-lift animate-pulse-gentle">
+                  <div className="w-12 h-12 bg-coffee rounded-full flex items-center justify-center animate-float">
                     <img 
                       src="/lovable-uploads/a61f3d98-8d01-437b-92a7-a66646b97d42.png" 
                       alt="Kalhua"
@@ -42,14 +60,14 @@ const HistoriaSection = () => {
                   </div>
                   <div>
                     <p className="font-semibold text-primary">Kalhua</p>
-                    <p className="text-sm text-muted">Nuestra mascota y símbolo</p>
+                    <p className="text-sm text-readable-light">Nuestra mascota y símbolo</p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="relative">
-              <div className="coffee-card p-2 bg-white">
+            <div className={`relative ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
+              <div className="coffee-card p-2 bg-white hover-lift">
                 <img 
                   src={foundersImage} 
                   alt="Fundadores de Kalhua Café"
