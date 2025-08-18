@@ -57,7 +57,7 @@ const ProductosSection = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-warm-beige rounded-full mb-6">
               <svg className="w-8 h-8 text-foreground" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M2,21V19H20V21H2M20,8V5L18,5V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z" />
@@ -73,14 +73,14 @@ const ProductosSection = () => {
           </div>
 
           {/* Products Grid - White and Black Design */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             {productos.map((producto, index) => (
               <div 
                 key={producto.id} 
                 className="product-card group opacity-0 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
               >
                 {/* Image Container */}
-                <div className="relative h-64 overflow-hidden bg-gray-50">
+                <div className="relative h-48 overflow-hidden bg-gray-50">
                   <img 
                     src={producto.imagen} 
                     alt={producto.nombre}
@@ -94,17 +94,17 @@ const ProductosSection = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 text-center">
+                <div className="p-4 text-center">
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-muted transition-colors duration-300">
                     {producto.nombre}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-6">
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-4">
                     {producto.descripcion}
                   </p>
                   
                   {/* Button with black gradient */}
                   <Button 
-                    className="w-full bg-gradient-to-r from-foreground to-muted text-white font-medium py-3 rounded-lg hover:from-muted hover:to-foreground transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="w-full bg-gradient-to-r from-foreground to-muted text-white font-medium py-2 rounded-lg hover:from-muted hover:to-foreground transition-all duration-300 hover:shadow-lg hover:scale-105"
                     onClick={() => window.open('https://wa.me/584146308748', '_blank')}
                   >
                     Ver Detalles
