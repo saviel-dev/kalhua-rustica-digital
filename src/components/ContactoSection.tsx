@@ -144,58 +144,58 @@ const ContactoSection = () => {
               </div>
             </div>
             
-            {/* Contact Form */}
-            <Card className={`coffee-card hover-lift ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
-              <CardHeader>
-                <CardTitle className="text-primary">Envíanos un mensaje</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Input
-                      type="text"
-                      name="nombre"
-                      placeholder="Tu nombre"
-                      value={formData.nombre}
-                      onChange={handleChange}
-                      required
-                      className="focus-coffee"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Input
-                      type="email"
-                      name="email"
-                      placeholder="Tu email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="focus-coffee"
-                    />
-                  </div>
-                  
-                  <div>
-                    <Textarea
-                      name="mensaje"
-                      placeholder="Cuéntanos, ¿en qué te podemos ayudar?"
-                      value={formData.mensaje}
-                      onChange={handleChange}
-                      required
-                      rows={4}
-                      className="focus-coffee resize-none"
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit" 
-                    className="btn-hero w-full"
-                  >
-                    Enviar mensaje
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
+            {/* Contact Form - Black Background */}
+            <div className={`bg-foreground rounded-2xl p-8 shadow-2xl hover-lift ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-white mb-2">Envíanos un mensaje</h3>
+                <p className="text-gray-300">Estamos aquí para ayudarte</p>
+              </div>
+              
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div>
+                  <Input
+                    type="text"
+                    name="nombre"
+                    placeholder="Tu nombre"
+                    value={formData.nombre}
+                    onChange={handleChange}
+                    required
+                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white"
+                  />
+                </div>
+                
+                <div>
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Tu email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white"
+                  />
+                </div>
+                
+                <div>
+                  <Textarea
+                    name="mensaje"
+                    placeholder="Cuéntanos, ¿en qué te podemos ayudar?"
+                    value={formData.mensaje}
+                    onChange={handleChange}
+                    required
+                    rows={4}
+                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white resize-none"
+                  />
+                </div>
+                
+                <Button 
+                  type="submit" 
+                  className="w-full bg-gradient-to-r from-white to-gray-200 text-foreground hover:from-gray-100 hover:to-white transition-all duration-300 hover:scale-105 font-medium py-3"
+                >
+                  Enviar mensaje
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
