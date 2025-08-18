@@ -32,7 +32,7 @@ All colors MUST be HSL format following brand specifications.
 
     /* Brand Gray (#40403e) */
     --muted: 60 3% 25%;
-    --muted-foreground: 45 20% 94%;
+    --muted-foreground: 60 4% 25%;
 
     --accent: 30 20% 62%;
     --accent-foreground: 0 0% 12%;
