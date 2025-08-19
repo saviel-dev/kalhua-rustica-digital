@@ -96,54 +96,40 @@ const ContactoSection = () => {
                   o simplemente charlar sobre nuestra pasión: el café artesanal.
                 </p>
                 
-                {/* Enhanced Contact Methods */}
-                <div className="space-y-6">
-                  {/* Phone Button */}
+                {/* Contact Methods - Minimalist Style */}
+                <div className="space-y-4">
+                  {/* Phone */}
                   <a 
                     href="tel:+584146308748"
-                    className="flex items-center p-4 bg-gradient-to-r from-foreground to-gray-700 hover:from-gray-700 hover:to-foreground text-white rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+                    className="flex items-center p-4 border-2 border-foreground rounded-lg hover:bg-foreground hover:text-white transition-all duration-200 group"
                   >
-                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-white/30 transition-colors">
-                      <Phone className="w-6 h-6" />
-                    </div>
+                    <Phone className="w-5 h-5 mr-3" />
                     <div>
-                      <p className="font-semibold text-sm text-white/80">Teléfono</p>
-                      <p className="text-lg font-bold">+58 414 6308748</p>
-                    </div>
-                    <div className="ml-auto">
-                      <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <p className="text-sm text-muted-foreground group-hover:text-white/80">Teléfono</p>
+                      <p className="font-medium">+58 414 6308748</p>
                     </div>
                   </a>
                   
-                  {/* Email Button */}
+                  {/* Email */}
                   <a 
                     href="mailto:hola@kalhuacafe.com"
-                    className="flex items-center p-4 bg-gradient-to-r from-warm-beige to-coffee hover:from-coffee hover:to-warm-beige text-white rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+                    className="flex items-center p-4 border-2 border-foreground rounded-lg hover:bg-foreground hover:text-white transition-all duration-200 group"
                   >
-                    <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mr-4 group-hover:bg-white/30 transition-colors">
-                      <Mail className="w-6 h-6" />
-                    </div>
+                    <Mail className="w-5 h-5 mr-3" />
                     <div>
-                      <p className="font-semibold text-sm text-white/80">Email</p>
-                      <p className="text-lg font-bold">hola@kalhuacafe.com</p>
-                    </div>
-                    <div className="ml-auto">
-                      <svg className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
+                      <p className="text-sm text-muted-foreground group-hover:text-white/80">Email</p>
+                      <p className="font-medium">hola@kalhuacafe.com</p>
                     </div>
                   </a>
                 </div>
                 
-                {/* Social Media */}
-                <div className="mt-8 pt-8 border-t border-gray-100">
+                {/* Social Media - Minimalist */}
+                <div className="mt-8 pt-8 border-t border-gray-200">
                   <h4 className="text-xl font-semibold text-foreground mb-6">
                     Síguenos en redes sociales
                   </h4>
-                  <div className="flex space-x-4">
-                    {socialLinks.map((social, index) => {
+                  <div className="flex space-x-3">
+                    {socialLinks.map((social) => {
                       const IconComponent = social.icon;
                       return (
                         <a
@@ -151,10 +137,9 @@ const ContactoSection = () => {
                           href={social.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-foreground hover:to-gray-700 rounded-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-xl group"
-                          style={{ animationDelay: `${index * 0.1}s` }}
+                          className="w-10 h-10 border border-foreground rounded-full flex items-center justify-center hover:bg-foreground hover:text-white transition-all duration-200"
                         >
-                          <IconComponent className="w-6 h-6 text-foreground group-hover:text-white transition-colors" />
+                          <IconComponent className="w-4 h-4" />
                         </a>
                       );
                     })}
@@ -163,58 +148,49 @@ const ContactoSection = () => {
               </div>
             </div>
             
-            {/* Contact Form - Enhanced Black Background */}
-            <div className={`bg-gradient-to-br from-foreground to-gray-900 rounded-3xl p-10 shadow-2xl ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
+            {/* Contact Form - Minimalist Black */}
+            <div className={`bg-foreground border border-gray-700 rounded-lg p-8 ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
               <div className="mb-8">
-                <h3 className="text-3xl font-bold text-white mb-3">Envíanos un mensaje</h3>
-                <p className="text-gray-300 text-lg">Estamos aquí para ayudarte</p>
+                <h3 className="text-2xl font-bold text-white mb-3">Envíanos un mensaje</h3>
+                <p className="text-gray-300">Estamos aquí para ayudarte</p>
               </div>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    type="text"
-                    name="nombre"
-                    placeholder="Tu nombre"
-                    value={formData.nombre}
-                    onChange={handleChange}
-                    required
-                    className="h-14 bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white rounded-xl text-lg backdrop-blur-sm"
-                  />
-                </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <Input
+                  type="text"
+                  name="nombre"
+                  placeholder="Tu nombre"
+                  value={formData.nombre}
+                  onChange={handleChange}
+                  required
+                  className="bg-transparent border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:ring-white"
+                />
                 
-                <div>
-                  <Input
-                    type="email"
-                    name="email"
-                    placeholder="Tu email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="h-14 bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white rounded-xl text-lg backdrop-blur-sm"
-                  />
-                </div>
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Tu email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="bg-transparent border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:ring-white"
+                />
                 
-                <div>
-                  <Textarea
-                    name="mensaje"
-                    placeholder="Cuéntanos, ¿en qué te podemos ayudar?"
-                    value={formData.mensaje}
-                    onChange={handleChange}
-                    required
-                    rows={5}
-                    className="bg-white/10 border-white/20 text-white placeholder:text-gray-300 focus:border-white focus:ring-white resize-none rounded-xl text-lg backdrop-blur-sm"
-                  />
-                </div>
+                <Textarea
+                  name="mensaje"
+                  placeholder="Cuéntanos, ¿en qué te podemos ayudar?"
+                  value={formData.mensaje}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  className="bg-transparent border-white/30 text-white placeholder:text-gray-400 focus:border-white focus:ring-white resize-none"
+                />
                 
                 <Button 
                   type="submit" 
-                  className="w-full h-14 bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-white text-foreground transition-all duration-300 hover:scale-105 hover:shadow-xl font-semibold text-lg rounded-xl"
+                  className="w-full bg-white text-foreground hover:bg-gray-100 transition-colors duration-200 font-medium"
                 >
                   Enviar mensaje
-                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                  </svg>
                 </Button>
               </form>
             </div>
