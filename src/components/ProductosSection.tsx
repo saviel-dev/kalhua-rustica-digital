@@ -53,58 +53,57 @@ const ProductosSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="productos" className="py-20 bg-white">
+    <section ref={sectionRef} id="productos" className="py-16 bg-warm-beige/20">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-warm-beige rounded-full mb-6">
-              <svg className="w-8 h-8 text-foreground" fill="currentColor" viewBox="0 0 24 24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-warm-beige rounded-full mb-8">
+              <svg className="w-10 h-10 text-foreground" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M2,21V19H20V21H2M20,8V5L18,5V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z" />
               </svg>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               ¿Por Qué Elegirnos?
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Descubre la excelencia en cada uno de nuestros productos artesanales, 
-              creados con pasión y dedicación para ofrecerte sabores únicos.
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
           </div>
 
-          {/* Products Grid - White and Black Design */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {/* Products Grid - Reference Image Style */}
+          <div className="grid md:grid-cols-3 gap-8">
             {productos.map((producto, index) => (
               <div 
                 key={producto.id} 
-                className="product-card group opacity-0 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden border border-gray-100"
+                className="product-card group opacity-0 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"
               >
-                {/* Image Container */}
-                <div className="relative h-48 overflow-hidden bg-gray-50">
+                {/* Image Container - Dark background like reference */}
+                <div className="relative h-72 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-8">
                   <img 
                     src={producto.imagen} 
                     alt={producto.nombre}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 rounded-2xl"
                   />
                   {producto.destacado && (
-                    <div className="absolute top-4 right-4 bg-foreground text-white px-3 py-1 rounded-full text-sm font-medium">
+                    <div className="absolute top-4 right-4 bg-gradient-to-r from-foreground to-gray-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
                       Estrella
                     </div>
                   )}
                 </div>
 
                 {/* Content */}
-                <div className="p-4 text-center">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-muted transition-colors duration-300">
+                <div className="p-8 text-center">
+                  <h3 className="text-2xl font-bold text-foreground mb-4">
                     {producto.nombre}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-4">
+                  <p className="text-muted-foreground leading-relaxed text-sm mb-8 min-h-[60px]">
                     {producto.descripcion}
                   </p>
                   
-                  {/* Button with black gradient */}
+                  {/* Button with black to gray gradient */}
                   <Button 
-                    className="w-full bg-gradient-to-r from-foreground to-muted text-white font-medium py-2 rounded-lg hover:from-muted hover:to-foreground transition-all duration-300 hover:shadow-lg hover:scale-105"
+                    className="bg-gradient-to-r from-foreground to-gray-600 hover:from-gray-600 hover:to-foreground text-white font-medium px-8 py-3 rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105 text-sm"
                     onClick={() => window.open('https://wa.me/584146308748', '_blank')}
                   >
                     Ver Detalles
