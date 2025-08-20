@@ -1,4 +1,5 @@
 import { Heart, Coffee } from "lucide-react";
+import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -27,9 +28,9 @@ const Footer = () => {
             <div className="space-y-4">
               <h4 className="font-semibold text-lg">Contacto</h4>
               <div className="space-y-2 text-sm text-primary-foreground/80">
-                <p>📱 +58 414 6308748</p>
-                <p>✉️ hola@kalhuacafe.com</p>
-                <p>📍 Venezuela</p>
+                <p> +58 414 6308748</p>
+                <p> hola@kalhuacafe.com</p>
+                <p> Venezuela</p>
               </div>
             </div>
             
@@ -55,6 +56,40 @@ const Footer = () => {
                 >
                   Contacto
                 </button>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div className="space-y-4">
+              <h4 className="font-semibold text-lg">Síguenos</h4>
+              <div className="flex space-x-4">
+                <a 
+                  href="https://www.instagram.com/kalhuas_cafe" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  aria-label="Instagram"
+                >
+                  <FaInstagram className="w-6 h-6" />
+                </a>
+                <a 
+                  href="https://www.tiktok.com/@kalhuas_cafe" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  aria-label="TikTok"
+                >
+                  <FaTiktok className="w-5 h-5" />
+                </a>
+                <a 
+                  href="https://www.facebook.com/kalhuas_cafe" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary-foreground/80 hover:text-primary-foreground transition-colors"
+                  aria-label="Facebook"
+                >
+                  <FaFacebook className="w-6 h-6" />
+                </a>
               </div>
             </div>
           </div>

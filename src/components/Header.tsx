@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, MessageCircle } from "lucide-react";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,8 +58,10 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={item.action}
-                className={`text-sm font-medium transition-colors duration-300 hover:text-coffee ${
-                  isScrolled ? 'text-foreground' : 'text-white'
+                className={`text-sm font-medium px-3 py-2 rounded-md transition-all duration-300 ${
+                  isScrolled 
+                    ? 'text-foreground hover:bg-gray-100' 
+                    : 'text-white hover:bg-white/20'
                 }`}
               >
                 {item.label}
@@ -70,14 +72,16 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button 
-              className={`transition-all duration-300 ${
+              className={`flex items-center gap-2 transition-all duration-300 group relative overflow-hidden ${
                 isScrolled 
-                  ? 'btn-secondary' 
-                  : 'bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm'
+                  ? 'bg-[#25D366] text-white hover:bg-[#128C7E] hover:shadow-lg hover:shadow-[#25D366]/30' 
+                  : 'bg-[#25D366] text-white hover:bg-[#128C7E] hover:shadow-lg hover:shadow-[#25D366]/30 backdrop-blur-sm'
               }`}
               onClick={() => window.open('https://wa.me/584146308748', '_blank')}
             >
-              WhatsApp
+              <span className="absolute inset-0 w-full h-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></span>
+              <MessageCircle className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform" />
+              <span className="relative z-10">WhatsApp</span>
             </Button>
           </div>
           
@@ -109,13 +113,15 @@ const Header = () => {
               ))}
               <div className="px-4 pt-2">
                 <Button 
-                  className="btn-secondary w-full"
+                  className="w-full flex items-center justify-center gap-2 relative overflow-hidden group bg-[#25D366] hover:bg-[#128C7E] text-white hover:shadow-lg hover:shadow-[#25D366]/30 transition-all duration-300"
                   onClick={() => {
                     window.open('https://wa.me/584146308748', '_blank');
                     setIsMenuOpen(false);
                   }}
                 >
-                  WhatsApp
+                  <span className="absolute inset-0 w-full h-full bg-white/20 scale-0 group-hover:scale-100 transition-transform duration-300 origin-center"></span>
+                  <MessageCircle className="w-4 h-4 relative z-10 group-hover:scale-110 transition-transform" />
+                  <span className="relative z-10">WhatsApp</span>
                 </Button>
               </div>
             </nav>

@@ -8,9 +8,9 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Background Image */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 h-full">
         <img 
           src={heroImage} 
           alt="Kalhua Café - Ambiente acogedor"
@@ -36,12 +36,15 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="mb-8">
-          <img 
-            src="/lovable-uploads/428a4bb0-5311-41e8-b795-8f2ae85ea3f2.png" 
-            alt="Kalhua Café Logo"
-            className="w-32 h-32 md:w-48 md:h-48 mx-auto mb-6 filter brightness-0 invert"
-          />
+        <div className="mb-8 w-48 md:w-64 mx-auto">
+          <div className="relative w-full pb-[100%]">
+            <img 
+              src="/lovable-uploads/428a4bb0-5311-41e8-b795-8f2ae85ea3f2.png" 
+              alt="Kalhua Café Logo"
+              className="absolute h-full w-full object-contain filter brightness-0 invert"
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
         </div>
         
         <h1 className="heading-hero text-white mb-6">

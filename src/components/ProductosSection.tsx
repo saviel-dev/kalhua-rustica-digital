@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import { Star, ChevronRight } from "lucide-react";
 
 const ProductosSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -8,23 +8,38 @@ const ProductosSection = () => {
     {
       id: 1,
       nombre: "Marquesa Kalhua",
-      descripcion: "Nuestro postre insignia con capas de café artesanal, textura cremosa y el sabor único que nos caracteriza",
-      imagen: "/lovable-uploads/428a4bb0-5311-41e8-b795-8f2ae85ea3f2.png",
+      descripcion: "Nuestro postre insignia con capas de café artesanal, textura cremosa y el sabor único que nos caracteriza.",
+      imagen: "/lovable-uploads/post.jpg",
+      precio: "$5.99",
+      categoria: "Postres",
       destacado: true
     },
     {
       id: 2,
       nombre: "Café Premium",
-      descripcion: "Granos selectos tostados con técnicas artesanales para ofrecerte una experiencia de sabor excepcional",
-      imagen: "/lovable-uploads/a61f3d98-8d01-437b-92a7-a66646b97d42.png",
+      descripcion: "Granos selectos tostados con técnicas artesanales para ofrecerte una experiencia de sabor excepcional.",
+      imagen: "/lovable-uploads/post.jpg",
+      precio: "$3.50",
+      categoria: "Bebidas",
       destacado: false
     },
     {
       id: 3,
       nombre: "Café Especial del Día", 
-      descripcion: "Mezclas exclusivas que cambian según la temporada, preparadas con la máxima dedicación",
-      imagen: "/lovable-uploads/428a4bb0-5311-41e8-b795-8f2ae85ea3f2.png",
+      descripcion: "Mezclas exclusivas que cambian según la temporada, preparadas con la máxima dedicación.",
+      imagen: "/lovable-uploads/post.jpg",
+      precio: "$4.25",
+      categoria: "Bebidas",
       destacado: false
+    },
+    {
+      id: 4,
+      nombre: "Tarta de Chocolate",
+      descripcion: "Deliciosa tarta de chocolate negro con toques de avellana, un clásico irresistible.",
+      imagen: "/lovable-uploads/post.jpg",
+      precio: "$6.50",
+      categoria: "Postres",
+      destacado: true
     }
   ];
 
@@ -37,12 +52,12 @@ const ProductosSection = () => {
             cards.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add('animate-fadeInUp');
-              }, index * 200);
+              }, index * 150);
             });
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -53,81 +68,76 @@ const ProductosSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="productos" className="py-16 bg-warm-beige/20">
+    <section ref={sectionRef} id="productos" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-warm-beige rounded-full mb-8">
-              <svg className="w-10 h-10 text-foreground" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M2,21V19H20V21H2M20,8V5L18,5V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z" />
-              </svg>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              ¿Por Qué Elegirnos?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-            </p>
-          </div>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nuestros Productos</h2>
+          <div className="w-20 h-1 bg-amber-500 mx-auto"></div>
+        </div>
 
-          {/* Products Grid - Reference Image Style */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {productos.map((producto, index) => (
-              <div 
-                key={producto.id} 
-                className="product-card group opacity-0 bg-white rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden"
-              >
-                {/* Image Container - Dark background like reference */}
-                <div className="relative h-72 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-8">
-                  <img 
-                    src={producto.imagen} 
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {productos.map((producto) => (
+            <div
+              key={producto.id}
+              className={`product-card group bg-white rounded-xl shadow-sm overflow-hidden transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1 opacity-0 border border-gray-100 ${
+                producto.destacado ? 'ring-2 ring-amber-400' : ''
+              }`}
+            >
+              <div className="relative h-48 overflow-hidden group">
+                <div className="absolute inset-0 overflow-hidden">
+                  <img
+                    src={producto.imagen}
                     alt={producto.nombre}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700 rounded-2xl"
+                    className={`w-full h-full object-cover transition-all duration-700 ease-in-out ${
+                      producto.categoria === 'Bebidas' ? 'group-hover:scale-110' : 'group-hover:scale-105'
+                    }`}
                   />
-                  {producto.destacado && (
-                    <div className="absolute top-4 right-4 bg-gradient-to-r from-foreground to-gray-600 text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
-                      Estrella
+                  {producto.categoria === 'Bebidas' && (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 mt-2">
+                        <div className="absolute w-4 h-8 bg-white/30 rounded-full animate-steam-1"></div>
+                        <div className="absolute w-3 h-6 bg-white/40 rounded-full left-1/2 -translate-x-1/2 animate-steam-2"></div>
+                        <div className="absolute w-4 h-8 bg-white/30 rounded-full right-0 animate-steam-3"></div>
+                      </div>
                     </div>
                   )}
                 </div>
-
-                {/* Content */}
-                <div className="p-8 text-center">
-                  <h3 className="text-2xl font-bold text-foreground mb-4">
-                    {producto.nombre}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed text-sm mb-8 min-h-[60px]">
-                    {producto.descripcion}
-                  </p>
-                  
-                  {/* Button with black to gray gradient */}
-                  <Button 
-                    className="bg-gradient-to-r from-foreground to-gray-600 hover:from-gray-600 hover:to-foreground text-white font-medium px-8 py-3 rounded-full transition-all duration-300 hover:shadow-xl hover:scale-105 text-sm"
-                    onClick={() => window.open('https://wa.me/584146308748', '_blank')}
-                  >
-                    Ver Detalles
-                  </Button>
+                {producto.destacado && (
+                  <div className="absolute top-3 left-3 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full z-10 animate-pulse">
+                    Destacado
+                  </div>
+                )}
+                <div className="absolute bottom-3 right-3 bg-white/90 backdrop-blur-sm text-amber-800 text-xs font-semibold px-2 py-1 rounded-full shadow-sm z-10">
+                  {producto.categoria}
                 </div>
               </div>
-            ))}
-          </div>
-          
-          {/* CTA Section */}
-          <div className="text-center bg-warm-beige/30 rounded-2xl p-8 border border-warm-beige/50">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              ¿Quieres conocer más sobre nuestros productos?
-            </h3>
-            <p className="text-muted-foreground mb-6 text-lg">
-              Contáctanos y descubre todo lo que Kalhua Café tiene para ofrecerte
-            </p>
-            <Button 
-              className="bg-gradient-to-r from-foreground to-muted text-white px-8 py-3 rounded-lg font-medium hover:shadow-lg hover:scale-105 transition-all duration-300 hover:from-muted hover:to-foreground"
-              onClick={() => window.open('https://wa.me/584146308748', '_blank')}
-            >
-              Contáctanos por WhatsApp
-            </Button>
-          </div>
+              
+              <div className="p-5">
+                <div className="flex justify-between items-start mb-3">
+                  <h3 className="text-lg font-bold text-gray-900">{producto.nombre}</h3>
+                  <span className="text-amber-600 font-bold text-lg">{producto.precio}</span>
+                </div>
+                
+                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{producto.descripcion}</p>
+                
+                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
+                    ))}
+                    <span className="text-gray-500 text-xs ml-1">(24)</span>
+                  </div>
+                  <button 
+                    className="text-sm font-medium text-amber-600 hover:text-amber-700 flex items-center"
+                    onClick={() => window.open('https://wa.me/584146308748', '_blank')}
+                  >
+                    Ordenar
+                    <ChevronRight className="w-4 h-4 ml-1" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
