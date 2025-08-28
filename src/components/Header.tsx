@@ -58,13 +58,16 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={item.action}
-                className={`text-sm font-medium px-3 py-2 rounded-md transition-all duration-300 ${
+                className={`relative text-sm font-medium px-3 py-2 rounded-md transition-all duration-300 group ${
                   isScrolled 
-                    ? 'text-foreground hover:bg-gray-100' 
+                    ? 'text-foreground' 
                     : 'text-white hover:bg-white/20'
                 }`}
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+                {isScrolled && (
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-coffee-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
+                )}
               </button>
             ))}
           </nav>

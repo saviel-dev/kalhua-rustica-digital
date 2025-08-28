@@ -137,7 +137,7 @@ const FuturoSection = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
               <button 
-                className="btn-hero flex-1 hover-lift"
+                className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white hover:from-black hover:to-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl py-3 px-6 rounded-lg font-medium flex-1"
                 onClick={() => window.open('https://wa.me/584146308748?text=¡Hola! Me interesa recibir información sobre la inauguración de su cafetería física.', '_blank')}
               >
                 Quiero estar al día

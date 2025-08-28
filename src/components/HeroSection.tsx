@@ -57,7 +57,7 @@ const HeroSection = () => {
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
-            className="btn-hero"
+            className="bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white hover:from-black hover:to-gray-900 transition-all duration-500 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-xl hover:shadow-black/30"
             onClick={() => scrollToSection('historia')}
           >
             Descubre nuestra historia
@@ -65,7 +65,7 @@ const HeroSection = () => {
           
           <Button 
             variant="outline"
-            className="bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm"
+            className="bg-white/10 text-white border-white/30 hover:bg-white/20 backdrop-blur-sm transition-all duration-500 ease-in-out hover:shadow-lg hover:shadow-white/10"
             onClick={() => scrollToSection('productos')}
           >
             Ver productos
