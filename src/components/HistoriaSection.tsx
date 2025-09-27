@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import foundersImage from "@/assets/founders.jpg";
 
 const HistoriaSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -69,7 +68,7 @@ const HistoriaSection = () => {
             <div className={`relative ${isVisible ? 'animate-fade-in-right delay-200' : 'opacity-0'}`}>
               <div className="coffee-card p-2 bg-white hover-lift">
                 <img 
-                  src={foundersImage} 
+                  src="/kalhua/Fundadores de kalhua Cafe.jpg" 
                   alt="Fundadores de Kalhua Café"
                   className="w-full h-auto rounded-xl object-cover"
                 />

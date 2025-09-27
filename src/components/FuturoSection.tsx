@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { MapPin, Clock, Coffee } from "lucide-react";
+import Timeline from "./Timeline";
 
 const FuturoSection = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -28,14 +29,13 @@ const FuturoSection = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Fecha objetivo para la cafetería física (ejemplo: 6 meses desde ahora)
-  const targetDate = new Date();
-  targetDate.setMonth(targetDate.getMonth() + 6);
+  // Fecha de inicio: 28 de marzo de 2024
+  const startDate = new Date('2024-03-28');
 
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+      const distance = now - startDate.getTime();
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -43,14 +43,10 @@ const FuturoSection = () => {
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       setTimeLeft({ days, hours, minutes, seconds });
-
-      if (distance < 0) {
-        clearInterval(timer);
-      }
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, []);
 
   return (
     <section id="futuro-section" className="py-20 bg-gradient-to-br from-coffee/10 to-coffee-bean/5 overflow-hidden">
@@ -66,9 +62,13 @@ const FuturoSection = () => {
           </div>
           
           <p className={`text-xl text-readable leading-relaxed mb-12 max-w-2xl mx-auto ${isVisible ? 'animate-fade-in-up delay-200' : 'opacity-0'}`}>
-            El sueño se hace realidad. Pronto podrás visitarnos en nuestro acogedor espacio 
-            donde cada detalle estará pensado para ofrecerte la mejor experiencia cafetera.
+            El sueño se hace realidad. Acompáñanos en cada paso hasta abrir nuestra cafetería y ofrecerte la mejor experiencia.
           </p>
+          
+          {/* Días vendiendo */}
+          <div className={`mb-8 ${isVisible ? 'animate-fade-in-up delay-250' : 'opacity-0'}`}>
+            <h3 className="text-2xl font-bold text-coffee mb-6">Días vendiendo</h3>
+          </div>
           
           {/* Countdown Timer */}
           <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 ${isVisible ? 'animate-scale-in delay-300' : 'opacity-0'}`}>
@@ -89,8 +89,16 @@ const FuturoSection = () => {
             ))}
           </div>
           
-          {/* Future Features */}
-          <div className={`grid md:grid-cols-3 gap-8 mb-12 ${isVisible ? 'animate-fade-in-up delay-400' : 'opacity-0'}`}>
+          {/* Timeline de Progreso */}
+          <div className={`mb-12 ${isVisible ? 'animate-fade-in-up delay-400' : 'opacity-0'}`}>
+            <h3 className="text-2xl font-bold text-primary mb-8 text-center">
+              Nuestro Camino hacia la Cafetería Física
+            </h3>
+            <Timeline />
+          </div>
+
+          {/* Características actualizadas */}
+          <div className={`grid md:grid-cols-3 gap-8 mb-12 ${isVisible ? 'animate-fade-in-up delay-450' : 'opacity-0'}`}>
             <div className="text-center hover-lift">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse-gentle">
                 <MapPin className="w-8 h-8 text-coffee" />
@@ -99,7 +107,7 @@ const FuturoSection = () => {
                 Ubicación Estratégica
               </h3>
               <p className="text-readable-light">
-                Un espacio pensado para la comodidad y el disfrute de nuestros clientes
+                Encuentra tu postre favorito actualmente en la tienda Soulbike de la castellana.
               </p>
             </div>
             
@@ -111,7 +119,7 @@ const FuturoSection = () => {
                 Experiencia Completa
               </h3>
               <p className="text-readable-light">
-                Degustaciones, talleres y eventos especiales para los amantes del café
+                Un lugar donde podrás degustar productos de calidad, y tu mascota a la par será consentida.
               </p>
             </div>
             
@@ -123,7 +131,7 @@ const FuturoSection = () => {
                 Horarios Extensos
               </h3>
               <p className="text-readable-light">
-                Disponible para acompañarte desde temprano hasta la noche
+                Atención personalizada, disponibles para atenderte en cada momento
               </p>
             </div>
           </div>

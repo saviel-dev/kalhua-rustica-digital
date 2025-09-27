@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { Star, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 const ProductosSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -7,39 +7,57 @@ const ProductosSection = () => {
   const productos = [
     {
       id: 1,
-      nombre: "Marquesa Kalhua",
-      descripcion: "Nuestro postre insignia con capas de café artesanal, textura cremosa y el sabor único que nos caracteriza.",
-      imagen: "/lovable-uploads/post.jpg",
+      nombre: "MARQUESA DE OREO",
+      descripcion: "Base de crema de chocolate blanco y crema de oreo, capas de galleta oreo americana, y topping de galleta oreo",
+      imagen: "/kalhua/OREO.png",
       precio: "$5.99",
-      categoria: "Postres",
+      categoria: "Marquesas",
       destacado: true
     },
     {
       id: 2,
-      nombre: "Café Premium",
-      descripcion: "Granos selectos tostados con técnicas artesanales para ofrecerte una experiencia de sabor excepcional.",
-      imagen: "/lovable-uploads/post.jpg",
-      precio: "$3.50",
-      categoria: "Bebidas",
+      nombre: "MARQUESA AREQUIPE CRUNCH",
+      descripcion: "Base de crema de arequipe, relleno con arequipe y maní, topping de maní y arequipe",
+      imagen: "/kalhua/AREQUIPE CRUNCH.png",
+      precio: "$5.99",
+      categoria: "Marquesas",
       destacado: false
     },
     {
       id: 3,
-      nombre: "Café Especial del Día", 
-      descripcion: "Mezclas exclusivas que cambian según la temporada, preparadas con la máxima dedicación.",
-      imagen: "/lovable-uploads/post.jpg",
-      precio: "$4.25",
-      categoria: "Bebidas",
+      nombre: "MARQUESA DE LIMÓN", 
+      descripcion: "Base de crema de pie de limón, relleno de curd de limón, topping de crema chantilly y ralladura de limón",
+      imagen: "/kalhua/LIMON.png",
+      precio: "$5.99",
+      categoria: "Marquesas",
       destacado: false
     },
     {
       id: 4,
-      nombre: "Tarta de Chocolate",
-      descripcion: "Deliciosa tarta de chocolate negro con toques de avellana, un clásico irresistible.",
-      imagen: "/lovable-uploads/post.jpg",
-      precio: "$6.50",
-      categoria: "Postres",
+      nombre: "MARQUESA AREQUIPE",
+      descripcion: "Base de crema de arequipe, relleno con arequipe y topping de galleta y arequipe",
+      imagen: "/kalhua/AREQUIPE.png",
+      precio: "$5.99",
+      categoria: "Marquesas",
+      destacado: false
+    },
+    {
+      id: 5,
+      nombre: "MARQUESA DE PARCHITA",
+      descripcion: "Base de crema de pie de Parchita, relleno de curd de parchita, topping de crema chantilly y curd de parchita",
+      imagen: "/kalhua/PARCHITA.png",
+      precio: "$5.99",
+      categoria: "Marquesas",
       destacado: true
+    },
+    {
+      id: 6,
+      nombre: "MARQUESA DE CHOCOLATE",
+      descripcion: "Base de crema de chocolate, relleno de sirope hershey y topping de cubierta de chocolate con galleta",
+      imagen: "/kalhua/CHOCOLATE.png",
+      precio: "$5.99",
+      categoria: "Marquesas",
+      destacado: false
     }
   ];
 
@@ -71,11 +89,11 @@ const ProductosSection = () => {
     <section ref={sectionRef} id="productos" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nuestros Productos</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Nuestras Marquesas</h2>
           <div className="w-20 h-1 bg-amber-500 mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {productos.map((producto) => (
             <div
               key={producto.id}
@@ -83,7 +101,7 @@ const ProductosSection = () => {
                 producto.destacado ? 'ring-2 ring-amber-400' : ''
               }`}
             >
-              <div className="relative h-48 overflow-hidden group">
+              <div className="relative h-40 overflow-hidden group">
                 <div className="absolute inset-0 overflow-hidden">
                   <img
                     src={producto.imagen}
@@ -112,23 +130,17 @@ const ProductosSection = () => {
                 </div>
               </div>
               
-              <div className="p-5">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-lg font-bold text-gray-900">{producto.nombre}</h3>
-                  <span className="text-amber-600 font-bold text-lg">{producto.precio}</span>
+              <div className="p-4">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-base font-bold text-gray-900">{producto.nombre}</h3>
+                  <span className="text-amber-600 font-bold text-base">{producto.precio}</span>
                 </div>
                 
-                <p className="text-gray-600 text-sm mb-4 line-clamp-3">{producto.descripcion}</p>
+                <p className="text-gray-600 text-xs mb-3 line-clamp-2">{producto.descripcion}</p>
                 
-                <div className="flex items-center justify-between pt-3 border-t border-gray-100">
-                  <div className="flex items-center">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
-                    ))}
-                    <span className="text-gray-500 text-xs ml-1">(24)</span>
-                  </div>
+                <div className="pt-2 border-t border-gray-100">
                   <button 
-                    className="text-sm font-medium text-amber-600 hover:text-amber-700 flex items-center"
+                    className="w-full border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-medium py-2 px-3 rounded-lg transition-all duration-300 flex items-center justify-center text-sm"
                     onClick={() => window.open('https://wa.me/584146308748', '_blank')}
                   >
                     Ordenar
